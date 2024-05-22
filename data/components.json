@@ -1,16 +1,22 @@
 {
     "categories": [
         {
-            "id":"bnt-21-05-2024",
+            "id":"bnt-22-05-2024",
             "type":"BUTTON",
             "name":"Button",
             "label":"bnt"
         },
         {
-            "id":"paragraph-21-05-2024",
+            "id":"paragraph-22-05-2024",
             "type":"PARAGRAPH",
             "name":"Paragraph",
             "label":"paragraph"
+        },
+        {
+            "id":"image-22-05-2024",
+            "type":"IMAGE",
+            "name":"Image",
+            "label":"Image"
         }
     ]
 }

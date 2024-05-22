@@ -36,17 +36,23 @@ export default function Admin() {
   const ACTIONS = [
     {
       name: "Save",
-      onClick: () => {
+      onClick: async () => {
         if (!addedComponents?.length) {
           alert("Not thing to save");
           return;
         }
-        Cookies.set(
-          LOCAL_STORAGE_KEY.TEMPLATE_DATA,
-          JSON.stringify(addedComponents)
-        );
-        // open new tab
-        window.open(ROUTES.consumer);
+
+        try {
+         Cookies.set(
+            LOCAL_STORAGE_KEY.TEMPLATE_DATA,
+            JSON.stringify(addedComponents)
+          );
+          // open new tab
+          window.open(ROUTES.consumer);
+        } catch (error) {
+          console.log("Error",error)
+        }
+       
       },
     },
     {
@@ -76,7 +82,7 @@ export default function Admin() {
     },
   ];
   return (
-    <div className="bg-white text-black h-screen flex flex-col">
+    <div className="bg-white text-black h-screen flex flex-col overflow-auto">
       <div className="flex gap-2 justify-center p-4">
         {ACTIONS.map((a, key) => (
           <div

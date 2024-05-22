@@ -1,6 +1,7 @@
 export enum COMPONENT_TYPE {
   BUTTON = "BUTTON",
   PARAGRAPH = "PARAGRAPH",
+  IMAGE = "IMAGE"
 }
 
 export interface COMPONENT_DATA {
@@ -9,5 +10,6 @@ export interface COMPONENT_DATA {
     name:string;
     label:string;
     alertMsg?:string
+    url?:string
 }
 

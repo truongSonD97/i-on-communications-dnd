@@ -6,6 +6,7 @@ import clsx from "clsx";
 import Input from "../common/Input";
 import { findIndex } from "lodash";
 import useAdminContext from "@/contexts/useAdminContext";
+import ImageUpload from "../common/ImageUpload";
 
 export default function ComponentsResult() {
   const { onUpdateComponents, addedComponents } = useAdminContext();
@@ -68,6 +69,12 @@ export default function ComponentsResult() {
             />
           );
 
+        case COMPONENT_TYPE.IMAGE:
+          return (
+            //base64 is to large to save cookie, then i will use the hardcode image 
+            <ImageUpload initValue={c.url} onChange={base64 => handleEditComponentProp("url","https://cdn.mos.cms.futurecdn.net/ifZxgpjqTS8Dp7AuozUcSG-1200-80.jpg")} />
+          )
+
         default:
           return (
             <Paragraph
@@ -111,7 +118,7 @@ export default function ComponentsResult() {
           </div>
         );
 
-      default:
+      case COMPONENT_TYPE.PARAGRAPH:
         return (
           <Input
             value={componentProps.label}
@@ -125,6 +132,8 @@ export default function ComponentsResult() {
             label="Paragraph Text"
           />
         );
+      default:
+        return null
     }
   }, [componentProps]);
 
@@ -132,9 +141,9 @@ export default function ComponentsResult() {
     <div className="border-l grow flex flex-col">
       <div
         className=" grow flex p-4"
-        onMouseMove={(e) => {
-          setMouseLocation({ x: e.clientX, y: e.clientY });
-        }}
+        // onMouseMove={(e) => {
+        //   setMouseLocation({ x: e.clientX, y: e.clientY });
+        // }}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >
